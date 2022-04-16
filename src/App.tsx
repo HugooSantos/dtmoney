@@ -21,12 +21,7 @@ function App() {
     <>
       <Header onOpenNewTransactionModal={handleOpenNewTransanctionModal} />
       <Dashboard />
-      <Modal
-      isOpen={isNewTransactionModalOpen} 
-      onRequestClose={handleCloseNewTransactionModal}
-      >
-          <h2>Cadastrar transação</h2>
-      </Modal>
+    
 
       <GlobalStyle />
     </>
