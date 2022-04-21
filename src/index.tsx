@@ -7,6 +7,37 @@ createServer({
    models:{
      transaction: Model,
    },
+
+   seeds(server){
+    server.db.loadData({
+      transactions:[
+        {
+          id:1,
+          title:'Desenvolvedor',
+          type:'deposit',
+          category:'Dev',
+          amount:6000,
+          createdAt: new Date('2022-01-21 09:00:00'),
+        },
+        {
+          id:2,
+          title:'Gestor',
+          type:'deposit',
+          category:'Gestão',
+          amount:10000,
+          createdAt: new Date('2022-02-21 10:00:00'),
+        },
+        {
+          id:3,
+          title:'Tela',
+          type:'withdraw',
+          category:'Equipamento',
+          amount:900,
+          createdAt: new Date('2022-03-12 15:00:00'),
+        }
+      ],
+    })
+   },
   routes(){
     this.namespace = 'api';
     this.get('/transactions', () => {
