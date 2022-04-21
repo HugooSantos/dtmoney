@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {Container} from './styles'
 import { api } from '../../services/api'
-
+import {transactionContext} from '../../TransactionsContext'
 interface Transaction {
     id: number;
     title:string;
@@ -12,6 +12,7 @@ interface Transaction {
 }
 
 export function TransactionTable(){
+    const data = useContext(TransactionContext)
     const [transactions, setTransactions] = useState<Transaction[]>([])
 
 
@@ -43,7 +44,10 @@ export function TransactionTable(){
                                 }).format(transaction.amount)}
                                 </td>
                             <td>{transaction.category}</td>
-                            <td> {new Intl.DateTimeFormat('pt-BR').format(transaction.amount)}</td>
+                            <td>
+                                 {new Intl.DateTimeFormat('pt-BR').format(
+                                     new Date(transaction.createdAt))}
+                            </td>
                         </tr>
                    )    
                    )}
